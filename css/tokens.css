@@ -39,25 +39,25 @@
 
   /* ---------- Tipografía ---------- */
   /* Figma usa Reckless VF-TRIAL (Displaay): licencia trial, NO apta para web publicada.
-     Sustituta ELEGIDA por Diego tras test visual: Lora (Google Fonts, variable),
-     calibrada a peso 420 con tracking -4.5% para igualar el color tipográfico de Reckless.
-     IMPORTANTE: cargar Lora como rango variable (400..700), no como pesos sueltos,
-     o font-weight: 420 no renderizará (caería a 400).
+     Sustituta ELEGIDA por Diego (2026-07-14): STIX Two Text (Google Fonts, variable),
+     por parecido con Reckless. IMPORTANTE: cargar como rango variable (400..700),
+     no como pesos sueltos, o el peso intermedio no renderizará.
      Carga única para todo el sitio:
-     https://fonts.googleapis.com/css2?family=Lora:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap */
-  --font-heading: 'Lora', Georgia, serif;
+     https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap */
+  --font-heading: 'STIX Two Text', Georgia, serif;
   --font-body: 'Zalando Sans', system-ui, -apple-system, sans-serif;
 
-  --weight-heading: 420;         /* calibrado por Diego contra Reckless a 64px */
+  --weight-heading: 430;         /* calibrado contra ref01 con STIX (Lora usaba 420) */
   --tracking-heading: -0.045em;  /* -4.5%; revisar a ojo en H3 (32px): si aprieta demasiado, subir hacia -0.03em */
   --weight-body: 400;
   --weight-ui: 500;       /* chips, botones, nav */
 
   /* Escala real del DS (px Figma → rem). La landing usa este subconjunto: */
-  --text-h1: clamp(2.5rem, 4.45vw, 4rem);   --lh-h1: 1.19;   /* hero: verificado en ref01 ≈64px, pitch de línea 76px @1440 */
-  --text-h2: clamp(2rem, 3.4vw, 2.5rem);    --lh-h2: 1.2;    /* H2 sección: 40/48 */
-  --text-h3: clamp(1.625rem, 2.6vw, 2rem);  --lh-h3: 1.25;   /* H3 tarjeta: 32/40 */
-  --text-body-lg: 1.3125rem; --lh-body-lg: 1.5714; /* párrafos principales: 21/33, verificado en hero ref01 (antes estimado 18/26); re-verificar al montar secciones */
+  --text-h1: clamp(2.75rem, 4.86vw, 4.375rem); --lh-h1: 1.086; /* hero con STIX: 70px (cap-height 46≈ref 47), pitch 76px @1440 */
+  --text-h2: clamp(2.25rem, 3.89vw, 3.5rem); --lh-h2: 1.214; /* H2 sección: 56px, pitch 68 — verificado en ref01 (antes estimado 40/48) */
+  --text-h3: clamp(1.75rem, 2.78vw, 2.5rem); --lh-h3: 1.2;   /* H3 tarjeta: 40/48 — verificado en ref01 (antes estimado 32/40) */
+  --text-lead: 1.3125rem;    --lh-lead: 1.5714;    /* párrafo del hero: 21/33, verificado en ref01 */
+  --text-body-lg: 1.125rem;  --lh-body-lg: 1.4445; /* párrafos de tarjetas de sección: 18/26, verificado en ref01 (diario) */
   --text-body: 1rem;         --lh-body: 1.5;       /* FAQ, footer: 16/24 */
   --text-small: 0.875rem;    --lh-small: 1.43;     /* chips, labels: 14/20 */
   --text-caption: 0.75rem;   --lh-caption: 1.5;    /* atribuciones testimonios: 12/18 */
@@ -75,7 +75,7 @@
   --space-4: 32px;
   --space-5: 48px;
   --space-6: 64px;
-  --space-section: clamp(64px, 9vw, 120px); /* separación vertical entre secciones */
+  --space-section: clamp(64px, 9.03vw, 130px); /* separación vertical entre secciones — verificado en ref01 (130 @1440) */
 
   /* ---------- Layout ---------- */
   --container-max: 1280px; /* verificado en ref01: contenido ≈1280px, gutter 80px @1440 (antes 1240) */

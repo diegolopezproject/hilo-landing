@@ -3,8 +3,8 @@
    Consume las variables de tokens.css. No define hex propios.
    ============================================ */
 
-/* ---------- Carga de fuentes (URL única, Lora variable 400..700 + Zalando Sans; display=swap) ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap');
+/* ---------- Carga de fuentes (URL única, STIX Two Text variable 400..700 + Zalando Sans; display=swap) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap');
 
 /* ============================================
    Reset moderno mínimo
@@ -210,23 +210,25 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
      por el eje principal (horizontal) queda flush-left sin más. */
   box-sizing: border-box;
   width: min(844px, 100%);
-  /* top 44 / lados y base 48, medidos en ref01 (tinta H1 en y423, botones en 692..747, base 795) */
-  padding: clamp(26px, 3.06vw, 44px) clamp(28px, 3.33vw, 48px) clamp(28px, 3.33vw, 48px);
+  /* top 49 / lados y base 48: calibrado para STIX de modo que la tinta del H1
+     caiga en y423 como en ref01 (botones en 692..747, base 795) */
+  padding: clamp(26px, 3.4vw, 49px) clamp(28px, 3.33vw, 48px) clamp(28px, 3.33vw, 48px);
   background-color: var(--lavender-100);
   border-radius: var(--radius-card);
 }
 .hero__card h1 {
   color: var(--purple-900);
   /* Fuerza el corte del ref ("No hace falta tenerlo / claro para empezar."):
-     Lora es más estrecha que Reckless y sin tope metería "claro" en la línea 1.
-     En em para que el corte se mantenga en todo el rango del clamp. */
-  max-width: 10.2em;
+     STIX es más estrecha que Reckless y sin tope metería "claro" en la línea 1
+     (medido a 70px/430: 554px sin "claro", 700px con). En em para que el corte
+     se mantenga en todo el rango del clamp. */
+  max-width: 8.9em;
 }
 .hero__card p {
-  margin-block-start: var(--space-4);
+  margin-block-start: 27px;                 /* 32 del ref menos 5px de compensación por métricas de STIX */
   max-width: 30rem;                         /* corta el párrafo a 2 líneas como el ref */
-  font-size: var(--text-body-lg);
-  line-height: var(--lh-body-lg);
+  font-size: var(--text-lead);
+  line-height: var(--lh-lead);
   color: var(--purple-900);                 /* verificado en ref01: la tinta del párrafo es morada, no neutra */
 }
 .hero__actions {
@@ -266,11 +268,126 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
 .btn--secondary:hover,
 .btn--secondary:active { background-color: var(--lavender-300); }
 
-/* Outline (2º botón del hero: borde 1px sobre relleno claro) */
+/* Outline (2º botón del hero: borde 1px, fondo transparente — deja ver la tarjeta) */
 .btn--outline {
-  background-color: var(--bg-card);          /* #fff */
+  background-color: transparent;
   border-color: var(--purple-900);
   color: var(--purple-900);
 }
 .btn--outline:hover { background-color: var(--btn-outline-hover); } /* #f2f2f2 */
 .btn--outline:active { background-color: var(--lavender-050); }     /* #f7f4fb */
+
+/* ============================================
+   Secciones (ritmo vertical medido en ref01)
+   ============================================ */
+main > section + section { padding-block-start: var(--space-section); }
+
+.section__title {
+  color: var(--ink);
+  max-width: var(--title-max, none); /* cada sección fija el corte de línea de su H2 */
+  margin-block-end: 45px;            /* H2 → tarjetas, medido en ref01 (1142→1187) */
+}
+#diario { --title-max: 8.75em; } /* corta tras "cómo" (medido: 467px sin "te", 516 con) */
+
+/* ============================================
+   Componente de tabs (interacciones §2) — reutilizable con N tabs.
+   Estructura: .tabs > .tabs__media (imágenes apiladas, crossfade)
+             + .tabs__card (tablist de chips + tabpanels de texto).
+   El enlace tab↔imagen↔panel es por orden en el DOM; no hay que tocar JS.
+   ============================================ */
+.tabs {
+  display: grid;
+  grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  gap: var(--space-3);
+}
+@media (max-width: 900px) {
+  .tabs { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- Imágenes de panel: dos capas apiladas, aspect-ratio fijo (sin reflow) --- */
+.tabs__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+.tabs__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.tabs__img.is-active { opacity: 1; }
+
+/* --- Tarjeta blanca: chips arriba, texto anclado abajo --- */
+.tabs__card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) var(--space-3) var(--space-5); /* 24 24 48, medido en ref01 */
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
+}
+.tabs__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.tabs__body { margin-block-start: auto; }
+
+/* Cada tabpanel fija su corte de H3 con --h3-max (inline en el HTML) */
+.tabs__text h3 { max-width: var(--h3-max, none); }
+.tabs__text p {
+  margin-block-start: 14px;                  /* H3 → párrafo, medido en ref01 */
+  max-width: 20.9em;                         /* 376px: ventana común [374,380) que reproduce los cortes del ref en ambos tabs */
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-body-lg);
+  color: var(--ink);
+}
+
+/* Swap de texto: fade-out 120ms → swap → fade-in 150ms con translateY(6px→0) */
+.tabs__text {
+  transition: opacity 150ms ease, transform 150ms var(--ease-out);
+}
+.tabs__text.is-leaving { opacity: 0; transition-duration: 120ms; }
+.tabs__text.is-entering { opacity: 0; transform: translateY(6px); transition: none; }
+
+/* --- Chips (estados exactos de tokens.css) --- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 40px;                              /* medido en ref01 */
+  padding-inline: var(--space-2);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--chip-bg);
+  color: var(--chip-text);
+  font-family: var(--font-body);
+  font-weight: var(--weight-ui);
+  font-size: var(--text-small);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+.chip:hover { background-color: var(--chip-bg-hover); }
+.chip[aria-selected="true"] {
+  background-color: var(--chip-bg-active);
+  color: var(--chip-text-active);
+}
+.chip svg { flex: none; }
+
+/* ============================================
+   Reveal on scroll (interacciones §5) — solo con JS activo
+   ============================================ */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
