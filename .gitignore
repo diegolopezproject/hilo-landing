@@ -1,3 +1,8 @@
 node_modules/
 .DS_Store
 .vercel/
+
+# Tooling local de agent-skills (ficheros + symlinks con rutas absolutas).
+# Restaurar en otra máquina con: npx skills install
+.agents/
+.claude/skills/
