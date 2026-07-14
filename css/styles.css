@@ -197,7 +197,7 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% center;              /* mantiene a la persona hacia la derecha */
+  object-position: 50% center;              /* recorte centrado: verificado por correlación de píxeles contra ref01 */
   z-index: -1;
 }
 .hero > .container {
@@ -210,22 +210,29 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
      por el eje principal (horizontal) queda flush-left sin más. */
   box-sizing: border-box;
   width: min(844px, 100%);
-  padding: clamp(28px, 3.3vw, 48px);
+  /* top 44 / lados y base 48, medidos en ref01 (tinta H1 en y423, botones en 692..747, base 795) */
+  padding: clamp(26px, 3.06vw, 44px) clamp(28px, 3.33vw, 48px) clamp(28px, 3.33vw, 48px);
   background-color: var(--lavender-100);
   border-radius: var(--radius-card);
 }
-.hero__card h1 { color: var(--purple-900); }
+.hero__card h1 {
+  color: var(--purple-900);
+  /* Fuerza el corte del ref ("No hace falta tenerlo / claro para empezar."):
+     Lora es más estrecha que Reckless y sin tope metería "claro" en la línea 1.
+     En em para que el corte se mantenga en todo el rango del clamp. */
+  max-width: 10.2em;
+}
 .hero__card p {
-  margin-block-start: var(--space-3);
-  max-width: 28rem;                         /* corta el párrafo a 2 líneas como el ref */
+  margin-block-start: var(--space-4);
+  max-width: 30rem;                         /* corta el párrafo a 2 líneas como el ref */
   font-size: var(--text-body-lg);
   line-height: var(--lh-body-lg);
-  color: var(--ink);
+  color: var(--purple-900);                 /* verificado en ref01: la tinta del párrafo es morada, no neutra */
 }
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: 12px;                                /* medido en ref01 (primario→outline) */
   margin-block-start: var(--space-4);
 }
 
@@ -236,7 +243,7 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 44px;
+  padding: 19px 44px;                       /* alto 56px, medido en ref01 */
   font-family: var(--font-body);
   font-weight: var(--weight-ui);
   font-size: var(--text-body);
