@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hilo — No hace falta tenerlo claro para empezar.</title>
+  <meta name="description" content="Explora contenidos, entiende tus opciones y encuentra el camino que mejor encaje contigo.">
+
+  <!-- Fuentes: preconnect para acelerar; la carga real (@import) vive en css/styles.css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- ============================================================
+       MAPA DE IMÁGENES DISPONIBLES  (assets/)
+       Fuente exportada de Figma → convertida a WebP (q82) con sharp.
+       Los SVG no se convierten.
+
+       assets/icons/
+         logo.svg            wordmark "Hilo" (fill #d8c2f5)  525x232
+         logo-white.svg      wordmark "Hilo" en blanco       (para navbar sobre hero)
+
+       assets/img/  (WebP desplegables)
+         hero-bg.webp        1672x941  foto hero (mujer junto a ventana). fetchpriority alta.
+         cta-phone.webp       539x499  mockup móvil + ilustración (sección CTA final).
+         testimonial-1.webp   206x440  retrato testimonio  ⚠ lleva badge ▶ incrustado
+         testimonial-2.webp   206x215  retrato testimonio  ⚠ lleva badge ▶ incrustado
+         testimonial-3.webp   206x215  retrato testimonio  ⚠ lleva badge ▶ incrustado
+             ⚠ copy.md decide: las tarjetas de foto van SIN botón de play.
+               Reexportar de Figma sin el ▶ antes de usarlas.
+
+       assets/img/panels/   (VACÍO — pendiente de exportar de Figma)
+         Los 9 paneles ilustrados de tabs referenciados en copy.md aún no existen:
+           panel-diario-registra   panel-diario-aprende
+           panel-apr-articulos  panel-apr-ejercicios  panel-apr-relatos  panel-apr-conceptos
+           panel-con-explora  panel-con-compara  panel-con-contacta
+
+       Referencia (NO desplegar — capturas de sección completas, movidas a refs/):
+         refs/09-cta-final-seccion.png · refs/10-footer.png · refs/11-hero-card.png
+       ============================================================ -->
+</head>
+<body>
+  <a class="skip-link" href="#hero">Saltar al contenido principal</a>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="site-header" id="top">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="#hero" aria-label="Hilo — inicio">
+        <svg viewBox="0 0 525 232" width="72" height="32" fill="currentColor" role="img" aria-hidden="true" focusable="false">
+          <path d="M439.549 231.629C392.02 231.629 358.526 196.948 358.526 148.268C358.526 99.5874 392.02 64.9067 439.549 64.9067C487.078 64.9067 520.572 99.5874 520.572 148.268C520.572 196.948 487.078 231.629 439.549 231.629ZM404.461 147.949C404.461 172.13 419.134 188.994 439.549 188.994C459.965 188.994 474.638 172.13 474.638 147.949C474.638 123.768 459.965 106.905 439.549 106.905C419.134 106.905 404.461 123.768 404.461 147.949Z"/>
+          <path d="M286.357 227.811V11.4546H331.015V227.811H286.357Z"/>
+          <path d="M210.24 68.725H254.898V227.811H210.24V68.725ZM206.412 26.7264C206.412 11.136 217.257 0 232.569 0C247.88 0 258.726 11.136 258.726 26.7264C258.726 42.3168 247.88 53.4528 232.569 53.4528C217.257 53.4528 206.412 42.3168 206.412 26.7264Z"/>
+          <path d="M131.528 227.81V141.268H49.8677V227.81H2.65759V20.999H49.8677V103.087H131.528V20.999H178.739V227.81H131.528Z"/>
+        </svg>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul class="site-nav__list">
+          <li><a href="#diario">Diario emocional</a></li>
+          <li><a href="#aprendizaje">Aprendizaje</a></li>
+          <li><a href="#contacto-terapeutico">Contacto terapéutico</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">No hace falta tenerlo claro para empezar.</h1>
+      </div>
+    </section>
+
+    <!-- ================= DIARIO EMOCIONAL ================= -->
+    <section id="diario" aria-labelledby="diario-title">
+      <div class="container">
+        <h2 id="diario-title">Deja por escrito cómo te sientes cada día</h2>
+      </div>
+    </section>
+
+    <!-- ================= APRENDIZAJE ================= -->
+    <section id="aprendizaje" aria-labelledby="aprendizaje-title">
+      <div class="container">
+        <h2 id="aprendizaje-title">Tus emociones tienen sentido. Entiende lo que sientes.</h2>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTO TERAPÉUTICO ================= -->
+    <section id="contacto-terapeutico" aria-labelledby="contacto-title">
+      <div class="container">
+        <h2 id="contacto-title">Conecta con el profesional adecuado, a tu ritmo</h2>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIOS ================= -->
+    <section id="testimonios" aria-labelledby="testimonios-title">
+      <div class="container">
+        <h2 id="testimonios-title">Personas que empezaron sin tenerlo claro</h2>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+      </div>
+    </section>
+
+    <!-- ================= CTA FINAL ================= -->
+    <section id="cta-final" aria-labelledby="cta-final-title">
+      <div class="container">
+        <h2 id="cta-final-title">Un espacio para ti, sin presiones.</h2>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <!-- Contenido del footer (columnas, wordmark, disclaimer, ayuda urgente, social)
+       se monta en su propia sesión. Ver copy.md § Footer. -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="container"></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

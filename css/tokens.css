@@ -1,0 +1,95 @@
+/* ============================================
+   HILO LANDING — DESIGN TOKENS
+   Colores extraídos por muestreo de píxel de los PNG de Figma (exactos).
+   Tipografía: tamaños ESTIMADOS, verificar contra Figma (marcados TODO).
+   ============================================ */
+
+:root {
+  /* ---------- Color: marca ---------- */
+  --purple-900: #391754;   /* morado marca: botón primario, footer bg, logo, titular hero */
+  --purple-950: #221230;   /* hover/pressed del botón primario */
+  --lavender-300: #d8c2f5; /* botón secundario hover, tarjetas de cita en testimonios, wordmark footer */
+  --lavender-100: #efe9f7; /* tarjeta hero, tarjeta CTA final, botón secundario default */
+  --lavender-050: #f7f4fb; /* botón outline pressed */
+
+  /* ---------- Color: neutros ---------- */
+  --bg-page: #faf9f5;      /* fondo general de página */
+  --bg-card: #ffffff;      /* tarjetas de sección, FAQ */
+  --ink: #151514;          /* titulares de sección y cuerpo (texto oscuro) */
+  --ink-soft: rgba(21, 21, 20, 0.72); /* texto secundario TODO VERIFICAR: puede ser color plano en Figma */
+  --border-soft: #e2e2e2;  /* borde de items FAQ TODO VERIFICAR */
+
+  /* ---------- Color: chips (tabs de sección) ---------- */
+  --chip-bg: #e7e1d0;        /* chip inactivo */
+  --chip-bg-hover: #d0cab4;  /* chip inactivo hover */
+  --chip-bg-active: #222220; /* chip activo */
+  --chip-text: #151514;      /* texto chip inactivo */
+  --chip-text-active: #e7e2cf; /* texto chip activo */
+
+  /* ---------- Color: acentos de paneles ----------
+     Los paneles ilustrados se exportan como imagen completa desde Figma;
+     estos tokens son de referencia (fondos alternativos, detalles). */
+  --accent-coral: #ff7647;   --accent-coral-soft: #ffa385;
+  --accent-pink: #fc4a65;    --accent-pink-soft: #fd8799;
+  --accent-violet: #ba8bf9;  --accent-violet-soft: #d8b4fe;
+  --accent-orange: #ffac0f;  --accent-orange-soft: #ffe6b8;
+  --accent-green: #71d67e;   --accent-green-soft: #c8efcd;
+  --accent-blue: #47b4ff;    --accent-blue-soft: #85cdff;
+
+  /* ---------- Tipografía ---------- */
+  /* Figma usa Reckless VF-TRIAL (Displaay): licencia trial, NO apta para web publicada.
+     Sustituta ELEGIDA por Diego tras test visual: Lora (Google Fonts, variable),
+     calibrada a peso 420 con tracking -4.5% para igualar el color tipográfico de Reckless.
+     IMPORTANTE: cargar Lora como rango variable (400..700), no como pesos sueltos,
+     o font-weight: 420 no renderizará (caería a 400).
+     Carga única para todo el sitio:
+     https://fonts.googleapis.com/css2?family=Lora:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap */
+  --font-heading: 'Lora', Georgia, serif;
+  --font-body: 'Zalando Sans', system-ui, -apple-system, sans-serif;
+
+  --weight-heading: 420;         /* calibrado por Diego contra Reckless a 64px */
+  --tracking-heading: -0.045em;  /* -4.5%; revisar a ojo en H3 (32px): si aprieta demasiado, subir hacia -0.03em */
+  --weight-body: 400;
+  --weight-ui: 500;       /* chips, botones, nav */
+
+  /* Escala real del DS (px Figma → rem). La landing usa este subconjunto: */
+  --text-h1: clamp(2.25rem, 4.2vw, 3rem);   --lh-h1: 1.25;   /* hero: 48/60 */
+  --text-h2: clamp(2rem, 3.4vw, 2.5rem);    --lh-h2: 1.2;    /* H2 sección: 40/48 */
+  --text-h3: clamp(1.625rem, 2.6vw, 2rem);  --lh-h3: 1.25;   /* H3 tarjeta: 32/40 */
+  --text-body-lg: 1.125rem;  --lh-body-lg: 1.4445; /* párrafos principales: 18/26 */
+  --text-body: 1rem;         --lh-body: 1.5;       /* FAQ, footer: 16/24 */
+  --text-small: 0.875rem;    --lh-small: 1.43;     /* chips, labels: 14/20 */
+  --text-caption: 0.75rem;   --lh-caption: 1.5;    /* atribuciones testimonios: 12/18 */
+
+  /* ---------- Radios ---------- */
+  --radius-card: 24px;     /* TODO VERIFICAR */
+  --radius-panel: 24px;
+  --radius-faq: 16px;
+  --radius-pill: 999px;
+
+  /* ---------- Espaciado ---------- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-section: clamp(64px, 9vw, 120px); /* separación vertical entre secciones */
+
+  /* ---------- Layout ---------- */
+  --container-max: 1240px;
+  --container-pad: clamp(20px, 4vw, 64px);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-reveal: 450ms;
+}
+
+/* ---------- Estados de botón (referencia exacta del DS) ----------
+   Primario:   fill #391754, texto #ffffff → hover/pressed fill #221230
+   Secundario: fill #efe9f7, texto #391754 → hover/pressed fill #d8c2f5
+   Outline:    fill #ffffff, borde 1px #391754, texto #391754
+               → hover fill #f2f2f2 → pressed fill #f7f4fb
+*/

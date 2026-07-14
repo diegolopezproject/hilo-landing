@@ -1,0 +1,118 @@
+/* ============================================
+   HILO LANDING — STYLES
+   Consume las variables de tokens.css. No define hex propios.
+   ============================================ */
+
+/* ---------- Carga de fuentes (URL única, Lora variable 400..700 + Zalando Sans; display=swap) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap');
+
+/* ============================================
+   Reset moderno mínimo
+   ============================================ */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select { font: inherit; }
+
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+a { color: inherit; }
+
+h1, h2, h3,
+p, li { overflow-wrap: break-word; }
+
+/* ============================================
+   Tipografía base (sobre tokens.css)
+   ============================================ */
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background-color: var(--bg-page);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--ink);
+}
+
+h1 { font-size: var(--text-h1); line-height: var(--lh-h1); }
+h2 { font-size: var(--text-h2); line-height: var(--lh-h2); }
+h3 { font-size: var(--text-h3); line-height: var(--lh-h3); }
+
+/* ============================================
+   Layout — contenedor
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ============================================
+   Accesibilidad base
+   ============================================ */
+/* Foco visible en todo lo interactivo (tokens: --purple-900) */
+:focus-visible {
+  outline: 2px solid var(--purple-900);
+  outline-offset: 2px;
+}
+
+/* Skip link: oculto hasta recibir foco */
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: var(--space-2);
+  z-index: 100;
+  padding: var(--space-1) var(--space-2);
+  background: var(--bg-card);
+  color: var(--purple-900);
+  border-radius: var(--radius-faq);
+  transform: translateY(-150%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* Respeto global a prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
