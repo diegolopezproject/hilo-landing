@@ -18,6 +18,7 @@
   --ink: #151514;          /* titulares de sección y cuerpo (texto oscuro) */
   --ink-soft: rgba(21, 21, 20, 0.72); /* texto secundario TODO VERIFICAR: puede ser color plano en Figma */
   --border-soft: #e2e2e2;  /* borde de items FAQ TODO VERIFICAR */
+  --btn-outline-hover: #f2f2f2; /* hover del botón outline (interacciones §4); neutro fuera de escala */
 
   /* ---------- Color: chips (tabs de sección) ---------- */
   --chip-bg: #e7e1d0;        /* chip inactivo */
@@ -53,7 +54,7 @@
   --weight-ui: 500;       /* chips, botones, nav */
 
   /* Escala real del DS (px Figma → rem). La landing usa este subconjunto: */
-  --text-h1: clamp(2.25rem, 4.2vw, 3rem);   --lh-h1: 1.25;   /* hero: 48/60 */
+  --text-h1: clamp(2.5rem, 4.45vw, 4rem);   --lh-h1: 1.3;    /* hero: verificado en ref01 ≈64px @1440 (antes estimado 48) */
   --text-h2: clamp(2rem, 3.4vw, 2.5rem);    --lh-h2: 1.2;    /* H2 sección: 40/48 */
   --text-h3: clamp(1.625rem, 2.6vw, 2rem);  --lh-h3: 1.25;   /* H3 tarjeta: 32/40 */
   --text-body-lg: 1.125rem;  --lh-body-lg: 1.4445; /* párrafos principales: 18/26 */
@@ -62,7 +63,7 @@
   --text-caption: 0.75rem;   --lh-caption: 1.5;    /* atribuciones testimonios: 12/18 */
 
   /* ---------- Radios ---------- */
-  --radius-card: 24px;     /* TODO VERIFICAR */
+  --radius-card: 30px;     /* verificado en ref01: tarjeta hero ≈30px (antes estimado 24) */
   --radius-panel: 24px;
   --radius-faq: 16px;
   --radius-pill: 999px;
@@ -77,8 +78,8 @@
   --space-section: clamp(64px, 9vw, 120px); /* separación vertical entre secciones */
 
   /* ---------- Layout ---------- */
-  --container-max: 1240px;
-  --container-pad: clamp(20px, 4vw, 64px);
+  --container-max: 1280px; /* verificado en ref01: contenido ≈1280px, gutter 80px @1440 (antes 1240) */
+  --container-pad: clamp(20px, 4vw, 64px); /* gutter mínimo en pantallas < container-max */
 
   /* ---------- Motion ---------- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

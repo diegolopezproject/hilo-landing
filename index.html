@@ -70,8 +70,20 @@
   <main>
     <!-- ================= HERO ================= -->
     <section class="hero" id="hero" aria-labelledby="hero-title">
+      <!-- alt NO está en copy.md (el hero no tiene alt definido); redactado para a11y, pendiente de confirmar con Diego -->
+      <img class="hero__bg" src="assets/img/hero-bg.webp"
+           alt="Una persona pensativa mira por la ventana, sentada a una mesa con un diario abierto y una taza de café"
+           width="1672" height="941" fetchpriority="high" decoding="async">
       <div class="container">
-        <h1 id="hero-title">No hace falta tenerlo claro para empezar.</h1>
+        <div class="hero__card">
+          <h1 id="hero-title">No hace falta tenerlo claro para empezar.</h1>
+          <p>Explora contenidos, entiende tus opciones y encuentra el camino que mejor encaje contigo.</p>
+          <div class="hero__actions">
+            <!-- primario → {FIGMA_PROTO_URL} en nueva pestaña · secundario/outline → {CASE_STUDY_URL} -->
+            <a class="btn btn--primary" href="#" data-todo="url" target="_blank" rel="noopener">Explora Hilo</a>
+            <a class="btn btn--outline" href="#" data-todo="url">Ver el caso de estudio</a>
+          </div>
+        </div>
       </div>
     </section>
 

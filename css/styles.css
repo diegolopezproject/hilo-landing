@@ -73,13 +73,22 @@ h3 { font-size: var(--text-h3); line-height: var(--lh-h3); }
 
 /* ============================================
    Layout — contenedor
+   Patrón min(): a 1440px el ancho queda en --container-max (1280) y el
+   gutter en 80px, clavando ref01. En pantallas menores, --container-pad
+   actúa como gutter mínimo. (verificado contra refs/01)
    ============================================ */
 .container {
-  width: 100%;
-  max-width: var(--container-max);
+  width: min(100% - 2 * var(--container-pad), var(--container-max));
   margin-inline: auto;
-  padding-inline: var(--container-pad);
 }
+
+/* Altura aproximada del navbar fixed, para el offset de anclas */
+:root { --nav-h: 140px; }
+
+html { scroll-behavior: smooth; }
+
+/* El contenido anclado no queda tapado por el navbar fixed */
+main > section[id] { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
 
 /* ============================================
    Accesibilidad base
@@ -116,3 +125,145 @@ h3 { font-size: var(--text-h3); line-height: var(--lh-h3); }
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================
+   Navbar (fixed, 2 estados) — interacciones §1
+   ============================================ */
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 50;
+  transition: background-color var(--dur-base) ease, box-shadow var(--dur-base) ease;
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: clamp(22px, 3.6vw, 50px);
+}
+
+/* Logo — el SVG hereda color vía currentColor */
+.site-header__logo {
+  display: inline-flex;
+  color: #fff;                       /* estado inicial: blanco sobre el hero */
+  border-radius: var(--radius-faq);
+  transition: color var(--dur-base) ease;
+}
+.site-header__logo svg { height: 33px; width: auto; }
+
+/* Enlaces */
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-2), 1.7vw, 22px); /* ajustado para clavar el clúster del ref (inicio ≈636px @1440) */
+}
+.site-nav a {
+  font-weight: var(--weight-ui);
+  font-size: var(--text-body);
+  color: #fff;                       /* estado inicial: blanco sobre el hero */
+  text-decoration: none;
+  text-underline-offset: 6px;
+  transition: color var(--dur-base) ease;
+}
+.site-nav a:hover { text-decoration: underline; }
+
+/* Estado scrolled (sólido) */
+.site-header.is-scrolled {
+  background-color: var(--bg-page);
+  box-shadow: 0 1px 12px rgba(21, 21, 20, 0.06);
+}
+.site-header.is-scrolled .site-header__logo { color: var(--purple-900); }
+.site-header.is-scrolled .site-nav a { color: var(--ink); }
+
+/* Foco de enlaces del navbar: lavanda sobre el hero, morado cuando es sólido */
+.site-header a:focus-visible { outline-color: var(--lavender-300); }
+.site-header.is-scrolled a:focus-visible { outline-color: var(--purple-900); }
+
+/* ============================================
+   Hero — foto full-bleed + tarjeta lavanda (clavado a ref01 @1440)
+   ============================================ */
+.hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(560px, 60.8vw, 900px);  /* @1440 ≈ 876px, alto de la foto en ref01 */
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% center;              /* mantiene a la persona hacia la derecha */
+  z-index: -1;
+}
+.hero > .container {
+  display: flex;
+  align-items: flex-end;                    /* tarjeta anclada abajo */
+  padding-block-end: clamp(32px, 5.6vw, 80px); /* @1440 ≈ 81px sobre el borde inferior de la foto */
+}
+.hero__card {
+  /* container es flex-row con align-items:flex-end → la tarjeta queda abajo;
+     por el eje principal (horizontal) queda flush-left sin más. */
+  box-sizing: border-box;
+  width: min(844px, 100%);
+  padding: clamp(28px, 3.3vw, 48px);
+  background-color: var(--lavender-100);
+  border-radius: var(--radius-card);
+}
+.hero__card h1 { color: var(--purple-900); }
+.hero__card p {
+  margin-block-start: var(--space-3);
+  max-width: 28rem;                         /* corta el párrafo a 2 líneas como el ref */
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-body-lg);
+  color: var(--ink);
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-4);
+}
+
+/* ============================================
+   Botones (estados exactos del DS) — interacciones §4
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 44px;
+  font-family: var(--font-body);
+  font-weight: var(--weight-ui);
+  font-size: var(--text-body);
+  line-height: 1;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease, transform 100ms ease;
+}
+.btn:active { transform: scale(0.98); }
+
+/* Primario */
+.btn--primary { background-color: var(--purple-900); color: #fff; }
+.btn--primary:hover,
+.btn--primary:active { background-color: var(--purple-950); }
+
+/* Secundario (relleno lavanda) — no usado en el hero, definido para el DS */
+.btn--secondary { background-color: var(--lavender-100); color: var(--purple-900); }
+.btn--secondary:hover,
+.btn--secondary:active { background-color: var(--lavender-300); }
+
+/* Outline (2º botón del hero: borde 1px sobre relleno claro) */
+.btn--outline {
+  background-color: var(--bg-card);          /* #fff */
+  border-color: var(--purple-900);
+  color: var(--purple-900);
+}
+.btn--outline:hover { background-color: var(--btn-outline-hover); } /* #f2f2f2 */
+.btn--outline:active { background-color: var(--lavender-050); }     /* #f7f4fb */

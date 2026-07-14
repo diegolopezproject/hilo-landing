@@ -6,5 +6,25 @@
 (function () {
   'use strict';
 
-  // TODO: interacciones (interacciones.md)
+  /* ---- Navbar: estado scrolled (interacciones §1) ---- */
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var THRESHOLD = 40;
+    var ticking = false;
+
+    function update() {
+      header.classList.toggle('is-scrolled', window.scrollY > THRESHOLD);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 })();
