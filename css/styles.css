@@ -287,7 +287,9 @@ main > section + section { padding-block-start: var(--space-section); }
   max-width: var(--title-max, none); /* cada sección fija el corte de línea de su H2 */
   margin-block-end: 45px;            /* H2 → tarjetas, medido en ref01 (1142→1187) */
 }
-#diario { --title-max: 8.75em; } /* corta tras "cómo" (medido: 467px sin "te", 516 con) */
+#diario { --title-max: 8.75em; }               /* corta tras "cómo" (medido: 467px sin "te", 516 con) */
+#aprendizaje { --title-max: 12.5em; }          /* corta tras "sentido." (648 sin "Entiende", 856 con) */
+#contacto-terapeutico { --title-max: 11em; }   /* corta tras "profesional" (567 sin "adecuado,", 795 con) */
 
 /* ============================================
    Componente de tabs (interacciones §2) — reutilizable con N tabs.
@@ -299,6 +301,11 @@ main > section + section { padding-block-start: var(--space-section); }
   display: grid;
   grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
   gap: var(--space-3);
+}
+/* Variante con la imagen a la derecha (aprendizaje, según ref01) */
+@media (min-width: 901px) {
+  .tabs--media-right { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); }
+  .tabs--media-right .tabs__media { order: 2; }
 }
 @media (max-width: 900px) {
   .tabs { grid-template-columns: minmax(0, 1fr); }
@@ -341,7 +348,8 @@ main > section + section { padding-block-start: var(--space-section); }
 .tabs__text h3 { max-width: var(--h3-max, none); }
 .tabs__text p {
   margin-block-start: 14px;                  /* H3 → párrafo, medido en ref01 */
-  max-width: 20.9em;                         /* 376px: ventana común [374,380) que reproduce los cortes del ref en ambos tabs */
+  /* 376px: ventana que reproduce los cortes del ref; cada panel puede ajustar con --p-max */
+  max-width: var(--p-max, 20.9em);
   font-size: var(--text-body-lg);
   line-height: var(--lh-body-lg);
   color: var(--ink);

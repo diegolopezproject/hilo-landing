@@ -33,12 +33,12 @@
              ⚠ copy.md decide: las tarjetas de foto van SIN botón de play.
                Reexportar de Figma sin el ▶ antes de usarlas.
 
-       assets/img/panels/  (WebP 440x440, extraídos de refs/06 a escala 1:1)
-         panel-diario-registra.webp  440x440  panel morado (tab Registra)
-         panel-diario-aprende.webp   440x440  panel naranja (tab Aprende)
-         PENDIENTES de exportar de Figma (7):
-           panel-apr-articulos  panel-apr-ejercicios  panel-apr-relatos  panel-apr-conceptos
-           panel-con-explora  panel-con-compara  panel-con-contacta
+       assets/img/panels/  (WebP 440x440, extraídos de refs/04-06 a escala 1:1)
+         panel-diario-registra.webp  morado   panel-diario-aprende.webp  naranja
+         panel-apr-articulos.webp    rosa     panel-apr-ejercicios.webp  violeta
+         panel-apr-relatos.webp      ámbar    panel-apr-conceptos.webp   verde
+         panel-con-explora.webp      coral    panel-con-compara.webp     azul
+         panel-con-contacta.webp     verde suave
 
        Referencia (NO desplegar — capturas de sección completas, movidas a refs/):
          refs/09-cta-final-seccion.png · refs/10-footer.png · refs/11-hero-card.png
@@ -145,16 +145,149 @@
     </section>
 
     <!-- ================= APRENDIZAJE ================= -->
+    <!-- Aquí la imagen va a la DERECHA y la tarjeta a la izquierda (ref01) -->
     <section id="aprendizaje" aria-labelledby="aprendizaje-title">
       <div class="container">
-        <h2 id="aprendizaje-title">Tus emociones tienen sentido. Entiende lo que sientes.</h2>
+        <h2 id="aprendizaje-title" class="section__title reveal">Tus emociones tienen sentido. Entiende lo que sientes.</h2>
+
+        <div class="tabs tabs--media-right reveal" data-tabs>
+          <div class="tabs__media">
+            <!-- alt no definidos en copy.md: redactados para a11y, pendientes de confirmar -->
+            <img class="tabs__img is-active" src="assets/img/panels/panel-apr-articulos.webp"
+                 alt="Tarjetas de artículos de Hilo: Cómo elegir terapeuta sin sentirte abrumado y Cómo bajar la intensidad cuando tu mente no para"
+                 width="440" height="440" decoding="async">
+            <img class="tabs__img" data-src="assets/img/panels/panel-apr-ejercicios.webp"
+                 alt="Tarjetas de ejercicios de Hilo: Movimientos de respiración 4-7-8 y Carta de agradecimiento a alguien que estuvo"
+                 width="440" height="440" decoding="async">
+            <img class="tabs__img" data-src="assets/img/panels/panel-apr-relatos.webp"
+                 alt="Tarjeta de relato de Hilo: Cuando entendí que mis reacciones tenían historia"
+                 width="440" height="440" decoding="async">
+            <img class="tabs__img" data-src="assets/img/panels/panel-apr-conceptos.webp"
+                 alt="Tarjetas de conceptos clave de Hilo: Apego, cómo lo que viviste de pequeño sigue influyendo hoy, y Rumiación"
+                 width="440" height="440" decoding="async">
+          </div>
+
+          <div class="tabs__card">
+            <div class="tabs__chips" role="tablist" aria-label="Contenidos de aprendizaje">
+              <button class="chip" role="tab" id="tab-apr-0" aria-selected="true" aria-controls="tabpanel-apr-0" type="button">
+                <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <rect x="2.2" y="2.8" width="11" height="12.4" rx="2"/>
+                  <path d="M5 6.6h5.4M5 9.2h5.4M5 11.8h3.4"/>
+                  <path d="M13.2 5.4h1.4a1.2 1.2 0 0 1 1.2 1.2v6.6a1.9 1.9 0 0 1-1.9 1.9"/>
+                </svg>
+                Artículos
+              </button>
+              <button class="chip" role="tab" id="tab-apr-1" aria-selected="false" aria-controls="tabpanel-apr-1" tabindex="-1" type="button">
+                <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <rect x="2.5" y="3.6" width="13" height="11.6" rx="2"/>
+                  <path d="M5.8 2v3.2M12.2 2v3.2"/>
+                  <path d="M7.2 12.4l3.6-3.6 1.4 1.4-3.6 3.6-1.8.4z"/>
+                </svg>
+                Ejercicios
+              </button>
+              <button class="chip" role="tab" id="tab-apr-2" aria-selected="false" aria-controls="tabpanel-apr-2" tabindex="-1" type="button">
+                <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M9 4.8C7.7 3.6 5.5 3.1 3 3.1v11.3c2.5 0 4.7.5 6 1.7 1.3-1.2 3.5-1.7 6-1.7V3.1c-2.5 0-4.7.5-6 1.7z"/>
+                  <path d="M9 4.8v11.3"/>
+                </svg>
+                Relatos
+              </button>
+              <button class="chip" role="tab" id="tab-apr-3" aria-selected="false" aria-controls="tabpanel-apr-3" tabindex="-1" type="button">
+                <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M6.6 12.4a4.4 4.4 0 1 1 4.8 0c-.5.3-.8.9-.8 1.5H7.4c0-.6-.3-1.2-.8-1.5z"/>
+                  <path d="M7.6 16.2h2.8"/>
+                  <path d="M9 1v.01M3.2 3.4l.01.01M14.8 3.4l-.01.01"/>
+                </svg>
+                Conceptos clave
+              </button>
+            </div>
+
+            <div class="tabs__body">
+              <div class="tabs__text" role="tabpanel" id="tabpanel-apr-0" aria-labelledby="tab-apr-0" style="--h3-max: 6.5em">
+                <h3>Lecturas para entenderte</h3>
+                <p>Artículos breves y accesibles que te ayudan a comprender lo que sientes y a ver tu situación con más claridad.</p>
+              </div>
+              <div class="tabs__text" role="tabpanel" id="tabpanel-apr-1" aria-labelledby="tab-apr-1" style="--h3-max: 6.5em; --p-max: 21.4em" hidden>
+                <h3>Herramientas para cuidarte</h3>
+                <p>Ejercicios sencillos y prácticos que te ayudan a parar un momento, conectar contigo y afrontar el día con más calma.</p>
+              </div>
+              <div class="tabs__text" role="tabpanel" id="tabpanel-apr-2" aria-labelledby="tab-apr-2" style="--h3-max: 6.5em" hidden>
+                <h3>Historias para reflejarte</h3>
+                <p>Experiencias reales de otras personas que pueden ayudarte a sentirte acompañado y comprender mejor lo que vives.</p>
+              </div>
+              <div class="tabs__text" role="tabpanel" id="tabpanel-apr-3" aria-labelledby="tab-apr-3" style="--h3-max: 6.5em" hidden>
+                <h3>Ideas para comprenderte</h3>
+                <p>Conceptos clave sobre emociones y bienestar explicados de forma sencilla para ayudarte a entender mejor lo que sientes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ================= CONTACTO TERAPÉUTICO ================= -->
     <section id="contacto-terapeutico" aria-labelledby="contacto-title">
       <div class="container">
-        <h2 id="contacto-title">Conecta con el profesional adecuado, a tu ritmo</h2>
+        <h2 id="contacto-title" class="section__title reveal">Conecta con el profesional adecuado, a tu ritmo</h2>
+
+        <div class="tabs reveal" data-tabs>
+          <div class="tabs__media">
+            <!-- alt no definidos en copy.md: redactados para a11y, pendientes de confirmar -->
+            <img class="tabs__img is-active" src="assets/img/panels/panel-con-explora.webp"
+                 alt="Perfiles de terapeutas en Hilo con disponibilidad, precio y etiquetas de especialidades"
+                 width="440" height="440" decoding="async">
+            <img class="tabs__img" data-src="assets/img/panels/panel-con-compara.webp"
+                 alt="Comparador de terapeutas de Hilo con dos perfiles lado a lado: enfoque, especialidades y formato"
+                 width="440" height="440" decoding="async">
+            <img class="tabs__img" data-src="assets/img/panels/panel-con-contacta.webp"
+                 alt="Pantalla de Hilo con un mensaje de primer contacto propuesto para enviar a una terapeuta"
+                 width="440" height="440" decoding="async">
+          </div>
+
+          <div class="tabs__card">
+            <div class="tabs__chips" role="tablist" aria-label="Pasos del contacto terapéutico">
+              <button class="chip" role="tab" id="tab-con-0" aria-selected="true" aria-controls="tabpanel-con-0" type="button">
+                <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <rect x="3.2" y="2.6" width="11.6" height="12.8" rx="2.4"/>
+                  <circle cx="9" cy="7.6" r="1.9"/>
+                  <path d="M5.9 13.2c.5-1.6 1.7-2.5 3.1-2.5s2.6.9 3.1 2.5"/>
+                </svg>
+                Explora
+              </button>
+              <button class="chip" role="tab" id="tab-con-1" aria-selected="false" aria-controls="tabpanel-con-1" tabindex="-1" type="button">
+                <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <circle cx="4.4" cy="4.2" r="1.7"/>
+                  <path d="M9.3 3.4h2.4a2.6 2.6 0 0 1 2.6 2.6v1.6M12.6 6l1.7 1.7L16 6"/>
+                  <circle cx="13.6" cy="13.8" r="1.7"/>
+                  <path d="M8.7 14.6H6.3a2.6 2.6 0 0 1-2.6-2.6v-1.6M5.4 12l-1.7-1.7L2 12"/>
+                </svg>
+                Compara
+              </button>
+              <button class="chip" role="tab" id="tab-con-2" aria-selected="false" aria-controls="tabpanel-con-2" tabindex="-1" type="button">
+                <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M15.6 2.4L8.4 14.6l-1.5-5L2.4 8l13.2-5.6z"/>
+                  <path d="M6.9 9.6l8.7-7.2"/>
+                </svg>
+                Contacta
+              </button>
+            </div>
+
+            <div class="tabs__body">
+              <div class="tabs__text" role="tabpanel" id="tabpanel-con-0" aria-labelledby="tab-con-0" style="--h3-max: 9em">
+                <h3>Encuentra a quien pueda acompañarte</h3>
+                <p>Explora perfiles de profesionales y descubre distintas formas de trabajar antes de decidir qué encaja contigo.</p>
+              </div>
+              <div class="tabs__text" role="tabpanel" id="tabpanel-con-1" aria-labelledby="tab-con-1" style="--h3-max: 7.5em" hidden>
+                <h3>Pon lado a lado lo que te importa</h3>
+                <p>Compara perfiles según los criterios que sean importantes para ti y decide con más tranquilidad.</p>
+              </div>
+              <div class="tabs__text" role="tabpanel" id="tabpanel-con-2" aria-labelledby="tab-con-2" style="--h3-max: 7.2em; --p-max: 20.3em" hidden>
+                <h3>Contacta, incluso sin tenerlo claro</h3>
+                <p>Haz un primer contacto cuando te sientas preparado. Sin prisas, sin compromiso y a tu ritmo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
