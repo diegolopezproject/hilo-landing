@@ -26,12 +26,13 @@
 
        assets/img/  (WebP desplegables)
          hero-bg.webp        1672x941  foto hero (mujer junto a ventana). fetchpriority alta.
-         cta-phone.webp       539x499  mockup móvil + ilustración (sección CTA final).
-         testimonial-1.webp   206x440  retrato testimonio  ⚠ lleva badge ▶ incrustado
-         testimonial-2.webp   206x215  retrato testimonio  ⚠ lleva badge ▶ incrustado
-         testimonial-3.webp   206x215  retrato testimonio  ⚠ lleva badge ▶ incrustado
-             ⚠ copy.md decide: las tarjetas de foto van SIN botón de play.
-               Reexportar de Figma sin el ▶ antes de usarlas.
+         cta-phone.webp       539x499  mockup móvil + ilustración (CTA final), colocación 1:1.
+         testimonial-1.webp   206x440  retrato testimonio (badge ▶ eliminado por parcheo;
+         testimonial-2.webp   206x215   sustituir cuando haya exports limpios de Figma)
+         testimonial-3.webp   206x215
+         testimonial-illustration.webp 416x209  tarjeta beige ilustrada (de ref01, 1:1)
+         testimonial-bubble.webp       200x209  tarjeta bocadillo (de ref01, 1:1)
+         avatar-laura.webp     32x32   avatar de la atribución de Laura (de ref01)
 
        assets/img/panels/  (WebP 440x440, extraídos de refs/04-06 a escala 1:1)
          panel-diario-registra.webp  morado   panel-diario-aprende.webp  naranja
@@ -388,23 +389,220 @@
     <!-- ================= FAQ ================= -->
     <section id="faq" aria-labelledby="faq-title">
       <div class="container">
-        <h2 id="faq-title">Preguntas frecuentes</h2>
+        <h2 id="faq-title" class="section__title reveal">Preguntas frecuentes</h2>
+
+        <ul class="faq-list" role="list" data-accordion>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+                ¿Y si no sé por dónde empezar?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <div class="faq-item__content">
+                <p>No pasa nada. Puedes explorar contenidos libremente o seguir una guía sencilla que te ayudará a orientarte paso a paso.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+                ¿Y si todavía no estoy seguro de querer empezar terapia?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <div class="faq-item__content">
+                <p>No hace falta decidir nada ahora. Puedes explorar distintas opciones y entender mejor tus necesidades antes de dar cualquier paso.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+                ¿Es normal no tener claro qué me pasa?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <div class="faq-item__content">
+                <p>Sí. Muchas personas llegan con dudas o sin saber cómo describir lo que sienten. Es una parte habitual del proceso.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+                ¿Cómo sé qué terapeuta elegir?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <div class="faq-item__content">
+                <p>Puedes comparar perfiles, conocer sus enfoques y descubrir qué profesionales podrían encajar mejor contigo antes de tomar una decisión.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+                ¿Qué puedo esperar de una primera sesión?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a5" role="region" aria-labelledby="faq-q5">
+              <div class="faq-item__content">
+                <p>La primera sesión suele servir para conocerse, compartir lo que te preocupa y resolver dudas sobre cómo podría ser el proceso.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+                ¿Tengo que registrarme para usar la app?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a6" role="region" aria-labelledby="faq-q6">
+              <div class="faq-item__content">
+                <p>No. Puedes explorar contenidos, leer relatos y consultar perfiles de terapeutas sin crear una cuenta ni compartir datos personales.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">
+                ¿Mis datos son privados?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a7" role="region" aria-labelledby="faq-q7">
+              <div class="faq-item__content">
+                <p>Sí. Puedes utilizar Hilo de forma anónima y decidir qué información compartir, cuándo hacerlo y con quién hacerlo.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
+                ¿Tengo que pagar algo por usar la app?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a8" role="region" aria-labelledby="faq-q8">
+              <div class="faq-item__content">
+                <p>No. El acceso a los contenidos, ejercicios y perfiles de terapeutas es gratuito para cualquier persona que quiera explorar.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9">
+                ¿Qué pasa si elijo un terapeuta y luego siento que no encaja conmigo?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a9" role="region" aria-labelledby="faq-q9">
+              <div class="faq-item__content">
+                <p>Es algo habitual. Puedes explorar otras opciones, cambiar de profesional o simplemente tomarte el tiempo que necesites.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item reveal">
+            <h3>
+              <button class="faq-item__button" type="button" id="faq-q10" aria-expanded="false" aria-controls="faq-a10">
+                ¿Esto sustituye a la terapia?
+                <svg class="faq-item__icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 1.5v13M1.5 8h13"/></svg>
+              </button>
+            </h3>
+            <div class="faq-item__panel" id="faq-a10" role="region" aria-labelledby="faq-q10">
+              <div class="faq-item__content">
+                <p>No. Hilo está pensado para ayudarte a orientarte y explorar opciones, pero no sustituye la atención psicológica profesional.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
     <!-- ================= CTA FINAL ================= -->
     <section id="cta-final" aria-labelledby="cta-final-title">
       <div class="container">
-        <h2 id="cta-final-title">Un espacio para ti, sin presiones.</h2>
+        <div class="cta-card reveal">
+          <h2 id="cta-final-title">Un espacio para ti, sin presiones.</h2>
+          <!-- Párrafo AJUSTE de copy.md (elimina la promesa de descarga) -->
+          <p>Empieza a explorar contenidos, relatos y perfiles a tu propio ritmo.</p>
+          <div class="cta-card__actions">
+            <!-- primario → {FIGMA_PROTO_URL} nueva pestaña · outline → {CASE_STUDY_URL} -->
+            <a class="btn btn--primary" href="#" data-todo="url" target="_blank" rel="noopener">Descubre Hilo</a>
+            <a class="btn btn--outline" href="#" data-todo="url">Ver el caso de estudio</a>
+          </div>
+          <!-- alt no definido en copy.md: redactado para a11y -->
+          <img class="cta-card__img" src="assets/img/cta-phone.webp"
+               alt="Móvil con la pantalla de inicio de Hilo junto a un personaje ilustrado que saluda"
+               width="539" height="499" loading="lazy" decoding="async">
+        </div>
       </div>
     </section>
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <!-- Contenido del footer (columnas, wordmark, disclaimer, ayuda urgente, social)
-       se monta en su propia sesión. Ver copy.md § Footer. -->
   <footer class="site-footer" aria-label="Pie de página">
-    <div class="container"></div>
+    <div class="container">
+      <div class="site-footer__top">
+        <!-- Wordmark gigante (logo.svg ya es lavanda #d8c2f5); decorativo: la marca aparece en el copyright -->
+        <img class="site-footer__wordmark" src="assets/icons/logo.svg" alt="" width="520" height="230" loading="lazy" decoding="async">
+        <nav class="site-footer__nav" aria-label="Enlaces del pie de página">
+          <ul role="list">
+            <li><a href="#diario">Cómo funciona</a></li>
+            <li><a href="#faq">Preguntas frecuentes</a></li>
+            <li><a href="#testimonios">Opiniones de usuarios</a></li>
+          </ul>
+          <ul role="list">
+            <li><a href="#legal">Privacidad y datos</a></li>
+            <li><a href="#ayuda">Ayuda urgente</a></li>
+            <!-- → mailto:{EMAIL} -->
+            <li><a href="#" data-todo="url">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Bloques obligatorios (copy.md): no están en el Figma pero no pueden omitirse -->
+      <div class="site-footer__notes">
+        <!-- [PENDIENTE en copy.md: créditos del equipo — confirmar nombres y formato] -->
+        <p id="legal">Hilo es un proyecto académico desarrollado como Trabajo Final de Máster en UX/UI (SHIFTA by ELISAVA). No es un servicio real ni existe una app disponible. Los testimonios y perfiles mostrados son ficticios, creados a partir de investigación con usuarios.</p>
+        <p id="ayuda">Si estás pasando por un momento difícil y necesitas apoyo inmediato, llama al <a href="tel:024">024</a> (línea de atención a la conducta suicida, gratuita y disponible 24 h en España) o al <a href="tel:112">112</a> en caso de emergencia.</p>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">© 2026 HILO — Todos los derechos reservados</p>
+        <div class="site-footer__social">
+          <a href="#" aria-label="Instagram de Hilo">
+            <svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="22" height="22" rx="6.5"/>
+              <circle cx="14" cy="14" r="5"/>
+              <circle cx="20.4" cy="7.6" r="1.3" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="TikTok de Hilo">
+            <svg viewBox="0 0 28 28" width="28" height="28" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M19.6 3h-3.8v15.4a3.3 3.3 0 1 1-3.3-3.3c.3 0 .7 0 1 .1V11a7.2 7.2 0 0 0-1-.1 7.1 7.1 0 1 0 7.1 7.1v-7.6a9 9 0 0 0 5 1.5V8.1A5.2 5.2 0 0 1 19.6 3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook de Hilo">
+            <svg viewBox="0 0 28 28" width="28" height="28" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M14 2.5A11.5 11.5 0 1 0 25.5 14 11.5 11.5 0 0 0 14 2.5zm1.6 11.9v7.3h-3.3v-7.3h-2.4v-2.9h2.4v-2c0-2.4 1.4-3.8 3.6-3.8a15 15 0 0 1 2.2.2v2.5h-1.3c-1.2 0-1.5.6-1.5 1.4v1.7h2.7l-.4 2.9z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube de Hilo">
+            <svg viewBox="0 0 28 28" width="28" height="28" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M25 8.5a2.9 2.9 0 0 0-2-2C21.2 6 14 6 14 6s-7.2 0-9 .5a2.9 2.9 0 0 0-2 2A30.6 30.6 0 0 0 2.5 14 30.6 30.6 0 0 0 3 19.5a2.9 2.9 0 0 0 2 2c1.8.5 9 .5 9 .5s7.2 0 9-.5a2.9 2.9 0 0 0 2-2 30.6 30.6 0 0 0 .5-5.5A30.6 30.6 0 0 0 25 8.5zM11.8 17.4v-6.8l6 3.4z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>

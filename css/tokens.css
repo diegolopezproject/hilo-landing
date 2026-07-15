@@ -11,6 +11,7 @@
   --lavender-300: #d8c2f5; /* botón secundario hover, tarjetas de cita en testimonios, wordmark footer */
   --lavender-100: #efe9f7; /* tarjeta hero, tarjeta CTA final, botón secundario default */
   --lavender-050: #f7f4fb; /* botón outline pressed */
+  --lavender-025: #faf5ff; /* formas decorativas de la tarjeta CTA (muestreado de refs/09) */
 
   /* ---------- Color: neutros ---------- */
   --bg-page: #faf9f5;      /* fondo general de página */

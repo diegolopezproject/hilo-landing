@@ -122,6 +122,18 @@
     });
   });
 
+  /* ---- FAQ: acordeón (interacciones §3) ----
+     Items independientes: abrir uno no cierra los demás. La animación
+     la hace CSS (grid-template-rows 0fr→1fr). */
+  document.querySelectorAll('[data-accordion] .faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-item__button');
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      item.classList.toggle('is-open', !open);
+    });
+  });
+
   /* ---- Reveal on scroll (interacciones §5) ---- */
   var revealables = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealables.length) {

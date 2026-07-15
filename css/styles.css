@@ -498,6 +498,218 @@ main > section + section { padding-block-start: var(--space-section); }
 }
 
 /* ============================================
+   FAQ — acordeón (interacciones §3; geometría de ref01:
+   items 816px centrados, alto cerrado 72, gap 8, radio 16)
+   ============================================ */
+#faq .section__title {
+  text-align: center;
+  margin-block-end: 38px;                 /* medido en ref01 (4230→4268) */
+}
+.faq-list {
+  max-width: 816px;
+  margin-inline: auto;
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+.faq-item {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-faq);
+}
+.faq-item__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 22px 32px 22px 26px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  letter-spacing: -0.02em;
+  font-size: 1.375rem;                    /* 22px, medido en ref01 */
+  line-height: 1.27;
+  color: var(--ink);
+}
+.faq-item__icon {
+  flex: none;
+  transition: transform var(--dur-base) ease;
+}
+.faq-item__button[aria-expanded="true"] .faq-item__icon {
+  transform: rotate(45deg);               /* + pasa a aspa (spec §3) */
+}
+/* Apertura/cierre con grid-template-rows 0fr→1fr (sin max-height mágico) */
+.faq-item__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-base) ease;
+}
+.faq-item.is-open .faq-item__panel { grid-template-rows: 1fr; }
+.faq-item__content {
+  overflow: hidden;
+  min-height: 0;
+}
+.faq-item__content p {
+  padding: 0 32px 24px 26px;
+  max-width: 46em;
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--ink-soft);
+}
+/* stagger del reveal entre items (interacciones §5) */
+.faq-list .faq-item:nth-child(2)  { transition-delay: 80ms; }
+.faq-list .faq-item:nth-child(3)  { transition-delay: 160ms; }
+.faq-list .faq-item:nth-child(4)  { transition-delay: 240ms; }
+.faq-list .faq-item:nth-child(5)  { transition-delay: 320ms; }
+.faq-list .faq-item:nth-child(6)  { transition-delay: 400ms; }
+.faq-list .faq-item:nth-child(7)  { transition-delay: 480ms; }
+.faq-list .faq-item:nth-child(8)  { transition-delay: 560ms; }
+.faq-list .faq-item:nth-child(9)  { transition-delay: 640ms; }
+.faq-list .faq-item:nth-child(10) { transition-delay: 720ms; }
+
+/* ============================================
+   CTA final — tarjeta lavanda con móvil (geometría de ref01/refs09:
+   tarjeta 1280×531, texto inset 32, móvil 1:1 en (663,16))
+   ============================================ */
+#cta-final { padding-block-start: clamp(96px, 13.4vw, 193px); } /* hueco extra medido en ref01 */
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--lavender-100);
+  border-radius: var(--radius-card);
+  padding: 121px 560px 113px 32px;        /* vertical calibrado a tinta (H2 en y5381); derecho reserva el móvil */
+}
+/* Formas orgánicas del fondo (aproximación CSS de las del Figma, tono muestreado de refs/09) */
+.cta-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 640px 400px at 12% 12%, var(--lavender-025) 55%, transparent 62%),
+    radial-gradient(ellipse 720px 380px at 52% 62%, var(--lavender-025) 55%, transparent 62%);
+  pointer-events: none;
+}
+.cta-card > * { position: relative; }
+.cta-card h2 {
+  max-width: 7.5em;                       /* corta tras "ti," (medido: 397 sin "sin", 471 con) */
+  color: var(--purple-900);
+}
+.cta-card p {
+  margin-block-start: 20px;
+  max-width: 20.5em;                      /* corta tras "y" (336 la línea 1, 403 con "perfiles") */
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-body-lg);
+  color: var(--purple-900);
+}
+.cta-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block-start: var(--space-4);
+}
+.cta-card__img {
+  position: absolute;
+  top: 16px;
+  right: 78px;                            /* colocación 1:1 verificada contra refs/09 */
+  width: 539px;
+  height: auto;
+}
+@media (max-width: 1100px) {
+  .cta-card { padding: clamp(48px, 8vw, 96px) clamp(28px, 4vw, 48px); }
+  .cta-card__img {
+    position: static;
+    display: block;
+    margin: var(--space-4) auto 0;
+    width: min(539px, 100%);
+  }
+}
+
+/* ============================================
+   Footer (ref01: morado --purple-900, wordmark lavanda 1:1,
+   enlaces a 661/955 del wordmark, pitch 50)
+   ============================================ */
+.site-footer {
+  margin-block-start: clamp(48px, 5.63vw, 81px);
+  background-color: var(--purple-900);
+  padding-block: 96px 60px;
+  color: var(--lavender-300);
+}
+.site-footer__top {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(40px, 9.8vw, 141px);
+  flex-wrap: wrap;
+}
+.site-footer__wordmark {
+  width: min(520px, 100%);
+  height: auto;
+  flex: none;
+}
+.site-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, auto));
+  column-gap: clamp(48px, 7.6vw, 110px);
+  padding-block-start: 8px;               /* alinea la primera fila de enlaces con el ref */
+}
+.site-footer__nav ul {
+  display: grid;
+  gap: 26px;
+  align-content: start;
+  list-style: none;
+  padding: 0;   /* los ul sin clase no los cubre el reset */
+  margin: 0;
+}
+.site-footer__nav a {
+  color: var(--lavender-300);
+  text-decoration: none;
+  text-underline-offset: 6px;
+}
+.site-footer__nav a:hover { text-decoration: underline; }
+.site-footer a:focus-visible { outline-color: var(--lavender-300); }
+
+/* Bloques obligatorios #legal y #ayuda (no están en el Figma; copy.md los exige) */
+.site-footer__notes {
+  margin-block-start: var(--space-6);
+  display: grid;
+  gap: var(--space-2);
+  max-width: 72ch;
+}
+.site-footer__notes p {
+  font-size: 0.8125rem;                   /* 13px: bloque discreto */
+  line-height: 1.55;
+  color: rgba(216, 194, 245, 0.7);
+}
+.site-footer__notes a { color: inherit; }
+#legal, #ayuda { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
+
+.site-footer__bottom {
+  margin-block-start: var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.site-footer__copy {
+  font-size: var(--text-body);
+  color: rgba(216, 194, 245, 0.72);
+}
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.site-footer__social a {
+  display: inline-flex;
+  color: var(--lavender-300);
+  border-radius: var(--radius-faq);
+}
+
+/* ============================================
    Reveal on scroll (interacciones §5) — solo con JS activo
    ============================================ */
 .js .reveal {
