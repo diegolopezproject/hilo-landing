@@ -3,12 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hilo — No hace falta tenerlo claro para empezar.</title>
+  <title>Hilo — No hace falta tenerlo claro para empezar</title>
   <meta name="description" content="Explora contenidos, entiende tus opciones y encuentra el camino que mejor encaje contigo.">
+  <meta name="theme-color" content="#391754">
 
-  <!-- Fuentes: preconnect para acelerar; la carga real (@import) vive en css/styles.css -->
+  <!-- Open Graph / Twitter Card.
+       TODO(diego): og:url y og:image requieren URL absoluta del dominio de producción
+       (hilo-landing.vercel.app pertenece a otro proyecto). Prefijar cuando se confirme. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Hilo">
+  <meta property="og:title" content="Hilo — No hace falta tenerlo claro para empezar">
+  <meta property="og:description" content="Explora contenidos, entiende tus opciones y encuentra el camino que mejor encaje contigo.">
+  <meta property="og:image" content="assets/img/og-image.png" data-todo="absolutizar-url">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hilo — No hace falta tenerlo claro para empezar">
+  <meta name="twitter:description" content="Explora contenidos, entiende tus opciones y encuentra el camino que mejor encaje contigo.">
+  <meta name="twitter:image" content="assets/img/og-image.png" data-todo="absolutizar-url">
+
+  <!-- Fuentes: no bloqueantes (link paralelo a la CSS, display=swap) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap" rel="stylesheet">
 
   <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
 

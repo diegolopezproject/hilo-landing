@@ -3,8 +3,8 @@
    Consume las variables de tokens.css. No define hex propios.
    ============================================ */
 
-/* ---------- Carga de fuentes (URL única, STIX Two Text variable 400..700 + Zalando Sans; display=swap) ---------- */
-@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400..700&family=Zalando+Sans:wght@400..600&display=swap');
+/* Fuentes: se cargan desde el <head> con <link> (paralelo, display=swap),
+   no con @import, para no encadenar peticiones tras esta hoja. */
 
 /* ============================================
    Reset moderno mínimo
