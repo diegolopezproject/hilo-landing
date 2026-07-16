@@ -541,7 +541,7 @@ main > section + section { padding-block-start: var(--space-section); }
   width: 32px;
   height: 32px;
   flex: none;
-  border-radius: 50%;
+  border-radius: 10px;   /* cuadrado con radio, igual que .tcard__badge (no círculo) */
   object-fit: cover;
 }
 
