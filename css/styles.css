@@ -182,6 +182,72 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + var(--space-3)); }
 .site-header a:focus-visible { outline-color: var(--lavender-300); }
 .site-header.is-scrolled a:focus-visible { outline-color: var(--purple-900); }
 
+/* ---- Menú móvil (≤768): hamburguesa + panel a pantalla completa ---- */
+.nav-toggle { display: none; }
+
+@media (max-width: 768px) {
+  :root { --nav-h: 80px; }
+
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: #fff;                          /* sobre el hero */
+    position: relative;
+    z-index: 61;
+    border-radius: var(--radius-faq);
+  }
+  .site-header.is-scrolled .nav-toggle,
+  .site-header.menu-open .nav-toggle { color: var(--ink); }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: currentColor;
+    transition: transform var(--dur-base) ease, opacity var(--dur-fast) ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .site-header__logo { position: relative; z-index: 61; }
+
+  .site-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    display: none;
+    background-color: var(--bg-page);
+    padding: calc(var(--nav-h) + var(--space-3)) var(--container-pad) var(--space-5);
+    overflow-y: auto;
+  }
+  .site-nav.is-open { display: block; }
+  .site-nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .site-nav a,
+  .site-header.is-scrolled .site-nav a {
+    color: var(--ink);
+    font-size: 1.5rem;
+  }
+  .site-header a:focus-visible { outline-color: var(--purple-900); }
+
+  /* con el menú abierto el header pasa a sólido y se bloquea el scroll */
+  .site-header.menu-open { background-color: var(--bg-page); }
+  .site-header.menu-open .site-header__logo { color: var(--purple-900); }
+}
+body:has(.site-nav.is-open) { overflow: hidden; }
+
 /* ============================================
    Hero — foto full-bleed + tarjeta lavanda (clavado a ref01 @1440)
    ============================================ */
@@ -304,11 +370,13 @@ main > section + section { padding-block-start: var(--space-section); }
   gap: var(--space-3);
 }
 /* Variante con la imagen a la derecha (aprendizaje, según ref01) */
-@media (min-width: 901px) {
+@media (min-width: 1025px) {
   .tabs--media-right { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); }
   .tabs--media-right .tabs__media { order: 2; }
 }
-@media (max-width: 900px) {
+/* ≤1024: columna única (el reordenado chips→imagen→texto vive al final
+   de la sección del componente, tras las reglas base a las que pisa) */
+@media (max-width: 1024px) {
   .tabs { grid-template-columns: minmax(0, 1fr); }
 }
 
@@ -387,6 +455,16 @@ main > section + section { padding-block-start: var(--space-section); }
   color: var(--chip-text-active);
 }
 .chip svg { flex: none; }
+
+/* ≤1024: orden chips → imagen → texto. display:contents disuelve la
+   tarjeta blanca para poder reordenar sus hijos en el grid.
+   (Va tras las reglas base del componente: misma especificidad.) */
+@media (max-width: 1024px) {
+  .tabs__card { display: contents; }
+  .tabs__chips { order: -1; }
+  .tabs__media { width: 100%; max-width: 520px; }
+  .tabs__body { order: 1; margin-block-start: 0; }
+}
 
 /* ============================================
    Testimonios — mosaico 6 col × 3 filas (medido en ref01:
@@ -485,16 +563,25 @@ main > section + section { padding-block-start: var(--space-section); }
 .testimonials .tcard:nth-child(8) { transition-delay: 560ms; }
 .testimonials .tcard:nth-child(9) { transition-delay: 640ms; }
 
-/* móvil: 2 columnas, alturas naturales */
-@media (max-width: 900px) {
+/* ≤1024: 2 columnas con alturas naturales; ≤768: 1 columna */
+@media (max-width: 1024px) {
   .testimonials { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-  .tcard { grid-area: auto; }
+  /* nth-child(n) iguala la especificidad de las reglas de colocación de escritorio */
+  .tcard:nth-child(n) { grid-area: auto; }
   .tcard:nth-child(1),
   .tcard:nth-child(4),
   .tcard:nth-child(5),
   .tcard:nth-child(8) { grid-column: span 2; }
   .tcard--img { aspect-ratio: 1 / 1; }
   .tcard--quote { min-height: 200px; }
+}
+@media (max-width: 768px) {
+  .testimonials { grid-template-columns: 1fr; }
+  .tcard:nth-child(1),
+  .tcard:nth-child(4),
+  .tcard:nth-child(5),
+  .tcard:nth-child(8) { grid-column: auto; }
+  .tcard--quote { min-height: 180px; }
 }
 
 /* ============================================
@@ -707,6 +794,26 @@ main > section + section { padding-block-start: var(--space-section); }
   display: inline-flex;
   color: var(--lavender-300);
   border-radius: var(--radius-faq);
+}
+
+/* ---- Footer apilado (≤768) y ajustes finos (≤480) ---- */
+@media (max-width: 768px) {
+  .site-footer { padding-block: 64px 40px; }
+  .site-footer__top { flex-direction: column; gap: var(--space-5); }
+  .site-footer__nav { padding-block-start: 0; }
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+}
+@media (max-width: 480px) {
+  .hero > .container { padding-block-end: var(--space-3); }
+  .tabs__media { max-width: 100%; }
+  .faq-item__button { padding: 18px 20px; font-size: 1.25rem; }
+  .faq-item__content p { padding: 0 20px 20px; }
+  .cta-card { padding: 40px 24px; }
+  .site-footer__nav { grid-template-columns: 1fr; row-gap: 26px; }
 }
 
 /* ============================================

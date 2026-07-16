@@ -32,6 +32,56 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  /* ---- Menú móvil: hamburguesa accesible ---- */
+  var navToggle = document.querySelector('.nav-toggle');
+  var siteNav = document.querySelector('.site-nav');
+  if (navToggle && siteNav && header) {
+    var setMenu = function (open) {
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      siteNav.classList.toggle('is-open', open);
+      header.classList.toggle('menu-open', open);
+    };
+    var isOpen = function () { return siteNav.classList.contains('is-open'); };
+
+    navToggle.addEventListener('click', function () { setMenu(!isOpen()); });
+
+    // cerrar al pulsar un enlace del panel
+    siteNav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setMenu(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!isOpen()) return;
+      if (e.key === 'Escape') {
+        setMenu(false);
+        navToggle.focus();
+        return;
+      }
+      // focus trap simple: Tab circula entre el botón y los enlaces del panel
+      if (e.key === 'Tab') {
+        var focusables = [navToggle].concat(
+          Array.prototype.slice.call(siteNav.querySelectorAll('a'))
+        );
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    // si el viewport pasa a escritorio, resetear el estado
+    var desktopMq = window.matchMedia('(min-width: 769px)');
+    var resetMenu = function () { if (desktopMq.matches && isOpen()) setMenu(false); };
+    if (desktopMq.addEventListener) desktopMq.addEventListener('change', resetMenu);
+    else desktopMq.addListener(resetMenu);
+  }
+
   /* ---- Tabs (interacciones §2) ----
      Genérico para N tabs: el chip i controla la imagen i y el tabpanel i (orden DOM). */
   document.querySelectorAll('[data-tabs]').forEach(function (root) {
