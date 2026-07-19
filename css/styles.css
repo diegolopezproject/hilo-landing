@@ -573,6 +573,10 @@ main > section + section { padding-block-start: var(--space-section); }
   .tcard:nth-child(5),
   .tcard:nth-child(8) { grid-column: span 2; }
   .tcard--img { aspect-ratio: 1 / 1; }
+  /* Las ilustraciones (bocadillo, muñeco) no se recortan: proporción natural.
+     El muñeco es 2:1; forzarlo a cuadrado le cortaba los brazos en móvil. */
+  .tcard--img.tcard--illus { aspect-ratio: auto; }
+  .tcard--illus img { height: auto; object-fit: contain; }
   .tcard--quote { min-height: 200px; }
 }
 @media (max-width: 768px) {
