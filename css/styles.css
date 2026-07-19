@@ -700,9 +700,9 @@ main > section + section { padding-block-start: var(--space-section); }
 }
 .cta-card__img {
   position: absolute;
-  top: 16px;
-  right: 78px;                            /* colocación 1:1 verificada contra refs/09 */
-  width: 539px;
+  top: 44px;
+  right: -6px;                            /* colocación según Frame 898 (export HD) */
+  width: 460px;
   height: auto;
 }
 @media (max-width: 1100px) {
