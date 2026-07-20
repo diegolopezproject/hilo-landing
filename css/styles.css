@@ -344,6 +344,14 @@ body:has(.site-nav.is-open) { overflow: hidden; }
 .btn--outline:hover { background-color: var(--btn-outline-hover); } /* #f2f2f2 */
 .btn--outline:active { background-color: var(--lavender-050); }     /* #f7f4fb */
 
+/* Deshabilitado (caso de estudio aún no publicado): atenuado, sin hover ni press */
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.btn:disabled:hover { background-color: transparent; }
+.btn:disabled:active { transform: none; }
+
 /* ============================================
    Secciones (ritmo vertical medido en ref01)
    ============================================ */
@@ -705,7 +713,7 @@ main > section + section { padding-block-start: var(--space-section); }
 .cta-card__img {
   position: absolute;
   top: 44px;
-  right: -6px;                            /* colocación según Frame 898 (export HD) */
+  right: 48px;                            /* Frame 898, desplazada hacia el centro (antes -6px, pegada al borde) */
   width: 460px;
   height: auto;
 }
